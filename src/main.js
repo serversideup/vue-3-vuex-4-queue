@@ -1,4 +1,20 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import { createStore } from 'vuex'
 
-createApp(App).mount('#app')
+import AppLayout from './App.vue'
+
+/**
+ * Vuex Queue Set Up
+ */
+import { queue } from './modules/queue.js';
+
+const store = createStore({
+    modules: {
+        queue
+    }
+});
+
+const app = createApp(AppLayout);
+
+app.use(store);
+app.mount('#app');
